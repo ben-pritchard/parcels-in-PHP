@@ -22,6 +22,12 @@
             $this->height = $height;
         }
 
+        function costToShip()
+        {
+            $formatted_price = number_format($this->getVolume() / 100, 2);
+            return $formatted_price;
+        }
+
         //getters and setters
 
         function setWeight($new_weight)
@@ -84,10 +90,12 @@
         <div class="container">
             <h1>Your Parcel's information</h1>
             <!-- <?php $parcel_weight = $user_parcel->getWeight() ?> -->
-            <?php echo "<p>Weight: ".$user_parcel->getWeight()." </p>"; ?>
-            <?php echo "<p>Length: ".$user_parcel->getLength()."</p>"; ?>
-            <?php echo "<p>Width: ".$user_parcel->getWidth()." </p>"; ?>
-            <?php echo "<p>Height: ".$user_parcel->getHeight()." </p>"; ?>
+            <?php echo  "<p>Weight: ".$user_parcel->getWeight()." </p>
+                        <p>Length: ".$user_parcel->getLength()."</p>
+                        <p>Width: ".$user_parcel->getWidth()." </p>
+                        <p>Height: ".$user_parcel->getHeight()." </p>
+                        <p>Volume: ".$user_parcel->getVolume()." </p>
+                        <p>Your cost to ship: $".$user_parcel->costToShip()." </p>"; ?>
         </div>
 
 
