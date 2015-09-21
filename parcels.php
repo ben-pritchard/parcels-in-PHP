@@ -5,6 +5,12 @@
     $form_width = $_GET["width"];
     $form_height = $_GET["height"];
 
+    $valid_parcel = true;
+
+    if ($form_weight <= 0 || $form_length <= 0 || $form_width <= 0 || $form_height <= 0) {
+        $valid_parcel = false;
+    }
+
     $user_parcel = new Parcel($form_weight, $form_length, $form_width, $form_height);
 
     class Parcel
@@ -90,12 +96,18 @@
         <div class="container">
             <h1>Your Parcel's information</h1>
             <!-- <?php $parcel_weight = $user_parcel->getWeight() ?> -->
-            <?php echo  "<p>Weight: ".$user_parcel->getWeight()." </p>
-                        <p>Length: ".$user_parcel->getLength()."</p>
-                        <p>Width: ".$user_parcel->getWidth()." </p>
-                        <p>Height: ".$user_parcel->getHeight()." </p>
-                        <p>Volume: ".$user_parcel->getVolume()." </p>
-                        <p>Your cost to ship: $".$user_parcel->costToShip()." </p>"; ?>
+            <?php
+                if ($valid_parcel == true) {
+                    echo  "<p>Weight: ".$user_parcel->getWeight()." </p>
+                            <p>Length: ".$user_parcel->getLength()."</p>
+                            <p>Width: ".$user_parcel->getWidth()." </p>
+                            <p>Height: ".$user_parcel->getHeight()." </p>
+                            <p>Volume: ".$user_parcel->getVolume()." </p>
+                            <p>Your cost to ship: $".$user_parcel->costToShip()." </p>";
+                } else {
+                    echo "<h4>This is not a valid parcel!</h4>";
+                }
+            ?>
         </div>
 
 
