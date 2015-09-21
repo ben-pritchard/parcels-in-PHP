@@ -80,10 +80,6 @@
         {
             return $this->length * $this->width * $this->height;
         }
-
-
-
-
     }
 ?>
 
@@ -109,7 +105,5 @@
                 }
             ?>
         </div>
-
-
     </body>
 </html>
